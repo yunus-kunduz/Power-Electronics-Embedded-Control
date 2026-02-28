@@ -20,46 +20,53 @@ The system reads an analog value from a potentiometer to determine the triggerin
 
 ## 🏗 Circuit Diagram
 ```mermaid
-flowchart LR
+graph TD
 
 MCU[STM32 Nucleo]
 
-SEG[7-Segment Display\nCommon Cathode]
+A[Segment A]
+B[Segment B]
+C[Segment C]
+D[Segment D]
+E[Segment E]
+F[Segment F]
+G[Segment G]
 
-MCU -->|PA10 (D2) +120Ω| SEG
-MCU -->|PB3 (D3) +120Ω| SEG
-MCU -->|PB5 (D4) +120Ω| SEG
-MCU -->|PB4 (D5) +120Ω| SEG
-MCU -->|PB10 (D6) +120Ω| SEG
-MCU -->|PA8 (D7) +120Ω| SEG
-MCU -->|PA9 (D8) +120Ω| SEG
+MCU -- PA10 D2 +120Ω --> A
+MCU -- PB3 D3 +120Ω --> B
+MCU -- PB5 D4 +120Ω --> C
+MCU -- PB4 D5 +120Ω --> D
+MCU -- PB10 D6 +120Ω --> E
+MCU -- PA8 D7 +120Ω --> F
+MCU -- PA9 D8 +120Ω --> G
 
-SEG -->|Pin1,10| GND[(GND)]
+SEG_GND[7 Segment GND Pins 1,10]
+SEG_GND --> GND[GND]
 
 POT[50k Potentiometer]
 V33[3.3V]
 
 V33 --> POT
-POT -->|Wiper → PA0| MCU
+POT -- Wiper --> PA0[A0 / PA0]
+PA0 --> MCU
 POT --> GND
 
-CAP[10µF Capacitor]
-CAP -->|+| POT
-CAP -->|-| GND
+CAP[10uF Capacitor]
+CAP -- + --> PA0
+CAP -- - --> GND
 
 LED[Blue LED]
-
-MCU -->|PC7 (D9) +680Ω| LED
+MCU -- PC7 D9 +680Ω --> LED
 LED --> GND
 
 LA[Logic Analyzer]
 
-MCU -->|PB6 (D10) Grid Signal| LA
-MCU -->|PC7 (D9) Trigger| LA
+MCU -- PB6 D10 Grid Signal --> LA
+MCU -- PC7 D9 Trigger --> LA
 GND --> LA
 
-BTN[B1 User Button]
-BTN -->|PC13 Safety Lock| MCU
+BTN[B1 Button]
+BTN -- PC13 --> MCU
 ```
 
 ---
