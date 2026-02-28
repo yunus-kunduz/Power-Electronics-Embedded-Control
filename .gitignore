@@ -1,0 +1,28 @@
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Derleme (Build) Çıktıları ve Klasörleri
+Debug/
+Release/
+build/
+*.o
+*.d
+*.su
+
+# Derlenmiş İkilik (Binary) ve Harita Dosyaları
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+
+# STM32CubeMX Yedek Dosyaları
+*.bak
+*.ioc.bak
+
+# Eclipse / STM32CubeIDE Çalışma Alanı Dosyaları
+.metadata/
+*.launch
+/.settings/
